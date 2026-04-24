@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: run osv-scanner (after PR)
         uses: google/osv-scanner-action/osv-scanner-action@main
@@ -57,6 +59,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Run differential analysis with semgrep
         run: semgrep scan --config .semgrep --sarif --output SourceCodeAnalysisDiff.sarif --baseline-commit ${{ github.event.pull_request.base.sha }}
