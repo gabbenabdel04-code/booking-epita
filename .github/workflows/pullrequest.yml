@@ -64,7 +64,7 @@ jobs:
           fetch-depth: 0
 
       - name: Run differential analysis with semgrep
-        run: semgrep scan --config .semgrep --sarif --output SourceCodeAnalysisDiff.sarif --baseline-commit ${{ github.event.pull_request.base.sha }}
+        run: semgrep scan --error --config .semgrep --sarif --output SourceCodeAnalysisDiff.sarif --baseline-commit ${{ github.event.pull_request.base.sha }}
 
       - name: Save differential report
         uses: actions/upload-artifact@v4
